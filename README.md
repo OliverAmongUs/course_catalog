@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an app which contains database of Subject, Course and Instructor for Brandeis University
 
-Things you may want to cover:
+Github link:
+https://github.com/OliverAmongUs/course_catalog
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Heroku link:
+https://dashboard.heroku.com/apps/blooming-scrubland-90044/resources
