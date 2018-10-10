@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  subject_name: 
-  subject_abbr: 
+  subject_name: MyString
+  subject_abbr: MyString
   subject_id: MyString
 
 two:
-  subject_name: 
-  subject_abbr: 
+  subject_name: MyString
+  subject_abbr: MyString
   subject_id: MyString
