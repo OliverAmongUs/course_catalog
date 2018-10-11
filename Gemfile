@@ -11,6 +11,9 @@ gem 'rails', '~> 5.1.6'
 
 gem 'bootstrap-sass', '3.3.7'
 
+
+gem 'activerecord-import'
+
 gem 'json', '2.1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

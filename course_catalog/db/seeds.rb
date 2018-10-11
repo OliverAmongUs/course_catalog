@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'json'
-gem 'activerecord-import'
+# gem 'activerecord-import'
 # require './course.json'
 
 coursefile = File.open('db/course.json').read
