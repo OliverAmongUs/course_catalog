@@ -6,28 +6,32 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
-    <div class="card text-center">
-      <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/courses">Course</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/subjects">Subject</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/instructors">Instructor</a>
-          </li>
-        </ul>
-      </div>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+          <div class="container">
+            <nav>
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "Home",   '/' %></li>
+                <li><%= link_to "Counrse",   courses_path %></li>
+                <li><%= link_to "Subject",   subjects_path %></li>
+                <li><%= link_to "Instructor",   instructors_path %></li>
+                <li><%= link_to "Log in", '#' %></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <%= render 'layouts/header' %>
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+          <%= yield %>
+          <%= render 'layouts/footer' %>
+          <%= debug(params) if Rails.env.development? %>
+        </div>
 
-    </div>
-    <%= yield %>
   </body>
 </html>
