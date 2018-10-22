@@ -1,0 +1,16 @@
+
+
+<h1>Search Courses Blow</h1>
+<%= form_for "", url: search_result_path, role: "search", method: :get do%>
+   <%= text_field_tag :search, params[:search], placeholder: "search..."%>
+
+   <%label_tag 'Subject:'%>
+   <!-- <%= select_tag "subject_id", options_from_collection_for_select(@subjects, "id", "subject_name", @default_id) %> -->
+
+   <%= collection_select(params[:subject], :subject, Subject.all, :subject_id, :subject_name, prompt: true)%>
+
+   <%= submit_tag 'Search', name: nil %>
+
+   <%= link_to 'Search', search_result_path %>
+
+<% end %>

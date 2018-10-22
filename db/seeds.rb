@@ -7,17 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 gem 'json'
 gem 'activerecord-import'
+
 # require './course.json'
 
 coursefile = File.open('db/course.json').read
 course_hash = JSON.parse(coursefile)
 
 courseArray = []
-columns_course = [:course_name, :course_description, :course_id]
-
+columns_course = [:course_name, :course_description, :course_id, :foreign_id]
 course_hash.each do |line|
-  courseArray << Course.new(course_name: line['name'], course_description: line['description'], course_id: line['code'])
+  courseArray << Course.new(course_name: line['name'], course_description: line['description'], course_id: line['code'], foreign_id: line['subjects'][0]['id'])
 end
+
 
 
 subjectfile = File.open('db/subject.json').read
@@ -41,8 +42,22 @@ instructor_hash.each do |line|
   instructorArray << Instructor.new(instructor_last: line['last'], instructor_first: line['first'], instructor_email: line['email'], instructor_id: line['id'])
 end
 
+joinfile = File.open('db/course.json').read
+join_hash = JSON.parse(joinfile)
+
+joinArray = []
+columns_join = [:course_name, :subject_code]
+
+join_hash.each do |line|
+  line['subjects'].each do |subject|
+    joinArray << CourseSubject.new(course_name: line['name'], subject_code: subject['id'])
+  end
+end
+
+
 
 
 Course.import columns_course, courseArray
 Subject.import columns_subject, subjectArray
 Instructor.import columns_instructor, instructorArray
+CourseSubject.import columns_join, joinArray

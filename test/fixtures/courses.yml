@@ -4,8 +4,10 @@ one:
   course_name: MyString
   course_description: MyString
   course_id: MyString
+  foreign_id: MyString
 
 two:
   course_name: MyString
   course_description: MyString
   course_id: MyString
+  foreign_id: MyString
