@@ -4,8 +4,8 @@ class Course < ApplicationRecord
   has_and_belongs_to_many :subjects
 
   def self.search_by(search_term)
-    where("LOWER (course_name) LIKE :search_term",
-    search_term: "%#{search_term.downcase}%")
+
+    where("LOWER (course_name) LIKE :search", search_term: "%#{search_term}%")
   end
 
 end

@@ -5,7 +5,6 @@
    <%= text_field_tag :search, params[:search], placeholder: "search..."%>
 
    <%label_tag 'Subject:'%>
-   <!-- <%= select_tag "subject_id", options_from_collection_for_select(@subjects, "id", "subject_name", @default_id) %> -->
 
    <%= collection_select(params[:subject], :subject, Subject.all, :subject_id, :subject_name, prompt: true)%>
 
