@@ -3,12 +3,13 @@ class SearchResultController < ApplicationController
     @Allcourses = Course.all
 
     if !params[:search].empty? && !params[:subject].empty?
-      @selected_courses = CourseSubject.where({course_name: params[:search], subject_code: params[:subject]})
+      @selected_courses = CourseSubject.where(["course_name LIKE ? and subject_code = ?", "%#{params[:search]}%", "#{params[:subject]}"])
+      #{}@selected_courses = CourseSubject.where("course_name LIKE :abc AND subject_code = :code",{:abc => "%#{params[:search]}%", code: "%#{params[:subject]}%"})
 
     elsif params[:subject] || params[:search]
         if params[:subject].empty?
-          @selected_courses = CourseSubject.where({course_name: params[:search]})
-          # byebug
+          @selected_courses = CourseSubject.where("course_name LIKE ?", "%#{params[:search]}%")
+          #byebug
         elsif params[:search].empty?
           @selected_courses = CourseSubject.where({subject_code: params[:subject]})
         end
