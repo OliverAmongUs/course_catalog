@@ -152,3 +152,7 @@ input {
     color: $state-danger-text;
   }
 }
+
+.alert-alert {
+  @extend .alert-danger;
+}

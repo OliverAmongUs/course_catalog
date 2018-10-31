@@ -1,15 +1,28 @@
 
 
 <h1>Search Courses Blow</h1>
-<%= form_for "", url: search_result_path, role: "search", method: :get do%>
-   <%= text_field_tag :search, params[:search], placeholder: "search..."%>
+<%= form_tag search_path, method: :get, :remote => true, :id => "course_searching" do%>
+   <%= text_field_tag :search, params[:search], placeholder: "search...", onkeyup: "$(this).parent('form').submit();" %>
 
    <%label_tag 'Subject:'%>
 
    <%= collection_select(params[:subject], :subject, Subject.all, :subject_id, :subject_name, prompt: true)%>
 
-   <%= submit_tag 'Search', name: nil %>
+<% end %>
 
-   <%= link_to 'Search', search_result_path %>
+
+
+
+
+<h1>Search Result</h1>
+<div id = "course_table">
+<% if @result.nil? %>
+
+
+
+<% else %>
+
+  <%= render 'course_table' %>
 
 <% end %>
+</div>
